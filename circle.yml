@@ -14,3 +14,6 @@ test:
     - mysql -u ubuntu -e "create database sample_spring_jpa;"
     - mysql -u ubuntu -e "create user 'tester'@'%' identified by 'tester@123'; grant all privileges on *.* to 'tester'@'%'; FLUSH PRIVILEGES;"
     - mvn test
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
