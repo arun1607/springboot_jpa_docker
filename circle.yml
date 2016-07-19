@@ -11,7 +11,6 @@ dependencies:
     - mvn -T 1C clean install -DskipTests=true
 test:
   override:
-    - docker run -d --name mysql_5_6 -e MYSQL_ROOT_PASSWORD="Techigrp@123" -p 3307:3306 mysql/mysql-server:5.6; sleep 10
-    - export docker_container_ip=`docker ps -a | grep 'mysql_5_6' | awk '{print $1}' | xargs docker inspect -f '{{ .NetworkSettings.IPAddress }}'` && mysql -u root -pTechigrp@123 -h ${docker_container_ip} -e "create database sample_spring_jpa;"
-    - export docker_container_ip=`docker ps -a | grep 'mysql_5_6' | awk '{print $1}' | xargs docker inspect -f '{{ .NetworkSettings.IPAddress }}'` && sed -i -e "s/mysql_docker_host_ip/${docker_container_ip}/g"  src/main/resources/application.properties
+    - mysql -u ubuntu -e "create database sample_spring_jpa;"
+    - mysql -u ubuntu -e "create user 'tester'@'%' identified by 'tester@123'; grant all privileges on *.* to 'tester'@'%'; FLUSH PRIVILEGES;"
     - mvn test
