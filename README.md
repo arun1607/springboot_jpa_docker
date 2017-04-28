@@ -1,1 +1,1 @@
-# springboot_jpa_docker
+# springboot_jpa_docker sample application
