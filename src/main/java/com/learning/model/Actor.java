@@ -11,19 +11,18 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "employees")
-public class Employee {
+@Table(name = "actor")
+public class Actor {
 
     @Id
     @GeneratedValue
+    @Column(name = "actor_id")
     private Long id;
 
-    @Column
-    private String name;
+    @Column(name = "first_name")
 
-    @Column
-    private Integer age;
+    private String firstName;
 
-    @Column
-    private Long salary;
+    @Column(name = "last_name")
+    private String lastName;
 }

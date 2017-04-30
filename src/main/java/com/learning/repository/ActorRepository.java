@@ -1,6 +1,6 @@
 package com.learning.repository;
 
-import com.learning.model.Employee;
+import com.learning.model.Actor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +11,5 @@ import javax.transaction.Transactional;
  */
 @Repository
 @Transactional
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-
+public interface ActorRepository extends JpaRepository<Actor, Long> {
 }
